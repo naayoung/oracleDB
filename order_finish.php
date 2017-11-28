@@ -1,3 +1,6 @@
+
+<!-- http://sergeswin.com/230 링크 참고 -->
+
 <?php
 $servername = "localhost";
 $username = "username";
