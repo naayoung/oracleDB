@@ -77,92 +77,79 @@
     <!-- START THE FEATURETTES -->
     <div class="container marketing">
       <form class="order" action="http://localhost/order_finish.php" method="post">
+
         <p> <h1>주문</h1> </p>
         <p> <h2>구매자정보</h2> </p>
         <p></p>
         <table class="customer_table">
-            <tr>
-        <td class="col1">  구매자ID </td>
-        <td class="col2"><input type="text" name="ID" value="" placeholder="ID"></td>
- </tr>
-
- <tr>
+          <tr>
+            <td class="col1">구매자ID</td>
+            <td class="col2"><input type="text" name="ID" value="" placeholder="ID"></td>
+          </tr>
+          <tr>
             <td class="col1">이름</td>
             <td class="col2">
               <input type="text" name="name" value="" placeholder="name">
             </td>
- </tr>
-
- <tr>
-          <td class="col1">이메일 </td>
+          </tr>
+          <tr>
+            <td class="col1">이메일 </td>
             <td class="col2"><input type="text" name="email" value="" placeholder="e-mail">   </td>
- </tr>
- <tr>
-    <td class="col1">전화번호 </td>
-    <td class="col2"><input type="text" name="pnumber" value="" placeholder="phone"> </td>
- </tr>
-    </div>
+          </tr>
+          <tr>
+              <td class="col1">전화번호 </td>
+              <td class="col2"><input type="text" name="pnumber" value="" placeholder="phone"> </td>
+          </tr>
+        </table>
 
-</table>
+        <p> <h2>받는사람정보</h2> </p>
+        <table class="delivery_address">
+          <tr>
+            <td class="col1">이름</td>
+            <td class="col2"><input type="text" name="name2" value="" placeholder="name">
+          </tr>
+          <tr>
+            <td class="col1">  배송 주소 </td>
+            <td class="col2"><input type="text" name="address" value="" placeholder="address"> </td>
+          </tr>
+          <tr>
+            <td class="col1">  연락처</td>
+            <td class="col2"> <input type="text" name="pnumber2" value="" placeholder="phone"> </td>
+          </tr>
+          <tr>
+            <td class="col1">배송 <br>요청사항 </td>
+            <td class="col2"><textarea cols="50" rows="2" placeholder="request"></textarea> </td>
+          </tr>
+        </table>
 
+        <p> <h2>제품정보</h2> </p>
+        <table class="product_table">
+          <tr>
+            <td class="col1">주문번호</td>
+            <td class="col2"><input type="text" name="onumber" value="" placeholder="onumber">  </td>
+          </tr>
+          <tr>
+            <td class="col1">수량</td>
+            <td class="col2"> <input type="text" name="" value="" placeholder="000"> </td>
+          </tr>
+          <tr>
+            <td class="col1">구분</td>
+            <td class="col2"> <input type="text" name="" value="" placeholder="classify"> </td>
+          </tr>
+        </table>
 
+        <p> <input type="submit" name="submit" value="완료" style="margin: 20px 50% 20px 50%"> </p>
 
-<p> <h2>받는사람정보</h2> </p>
-<table class="delivery_address">
-
-  <tr>
-    <td class="col1">이름</td>
-    <td class="col2"><input type="text" name="name2" value="" placeholder="name">
-  </tr>
-  <tr>
-        <td class="col1">  배송 주소 </td>
-        <td class="col2"><input type="text" name="address" value="" placeholder="address"> </td>
-  </tr>
-  <tr>
-        <td class="col1">  연락처</td>
-        <td class="col2"> <input type="text" name="pnumber2" value="" placeholder="phone"> </td>
-  </tr>
-  <tr>
-          <td class="col1">배송 <br>요청사항 </td>
-          <td class="col2"><textarea cols="50" rows="2" placeholder="request"></textarea> </td>
-  </tr>
-</table>
-
-
-
-
-
-
-<p> <h2>제품정보</h2> </p>
-
-<table class="product_table">
-<tr>
-          <td class="col1">주문번호</td>
-          <td class="col2"><input type="text" name="onumber" value="" placeholder="onumber">  </td>
-</tr>
-<tr>
-  <td class="col1">수량</td>
-  <td class="col2"> <input type="text" name="" value="" placeholder="000"> </td>
-</tr>
-
-<tr>
-          <td class="col1">구분</td>
-          <td class="col2"> <input type="text" name="" value="" placeholder="classify"> </td>
-</tr>
-
-
-</table>
-<p  > <input  type="submit" name="submit" value="업로드" style="margin: 20px 50% 20px 50%"> </p>
       </form>
 
-        <!-- /END THE FEATURETTES -->
-        <hr class="featurette-divider">
+      <!-- /END THE FEATURETTES -->
+      <hr class="featurette-divider">
 
         <!-- FOOTER -->
       <footer>
-          <p class="pull-right"><a href="#">Back to top</a></p>
-          <p>&copy; 2017 Delivery Management System &middot; <a href="#">Privacy</a></p>
-        </footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017 Delivery Management System &middot; <a href="#">Privacy</a></p>
+      </footer>
     </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
