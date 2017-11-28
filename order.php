@@ -76,7 +76,7 @@
 
     <!-- START THE FEATURETTES -->
     <div class="container marketing">
-      <form class="order" action="http://localhost/order_finish.php" method="post">
+      <form class="order" action="order_finish.php" method="post">
 
         <p> <h1>주문</h1> </p>
         <p> <h2>구매자정보</h2> </p>
