@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -21,6 +22,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script>
     <script src="js/ie-emulation-modes-warning.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
     <style>
     h2 {
@@ -61,13 +63,62 @@
     </div>
 
     <!-- START THE FEATURETTES -->
+    <?php
+      $con = oci_connect("B489059","B489059",""203.249.87.162:1521/orcl);
+    
+      if(!$con){
+        echo "Oricale Connect Error";
+        exit();
+      }
+
     <div class="container marketing">
-        <form align="center">
-            <h2>ë°°ì†¡ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”</h2>
-            <input type="text" ></>
-            <button>ê²€ìƒ‰</button>
-        </form>
-        
+      
+      <script>
+      function check(){
+        var name=document.getElementById('Delnumber').value;
+        if($DEL_NUMBER == name ){
+          document.write("<font size='5'> $CUS_NAME´ÔÀÇ »óÇ°Àº ¹è¼ÛÁØºñÁßÀÔ´Ï´Ù!¢½</font></br></br>");
+          document.write("<font size='5'> <strong><ÅÃ¹èÈ¸»çÁ¤º¸></strong></font></br></br>");
+          document.write("<font size='4'> ÅÃ¹è¾÷Ã¼¸í: $COM_NAME</br>ÀüÈ­¹øÈ£: $COM_PHONE</br>ÁÖ¼Ò: $COM_ADDRESS</br></font></br></br>");
+          document.write("<img width='450' height='270' src='img/NY_Delivery.png'/></br></br>");
+          
+        }
+        else if($DEL_NUMBER != name){
+          alert("Àß¸øµÈ ¹è¼Û¹øÈ£ÀÔ´Ï´Ù.");
+        }
+        else(){ //¾Æ¹«°Íµµ ÀÔ·ÂÇÏÁö¾Ê¾Ò°Å³ª ¼ýÀÚÀÏ°æ¿ì
+          checkNotEmpty(document.getElementById('Delnumber'));
+          checkNumeric(document.getElementById('Delnumber'));
+        }
+      }
+	    function checkNotEmpty(field){
+        if(field.value.length==0){
+          alert("¹è¼Û¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!!");
+          field.focus();
+          return false;
+        }
+        return true;
+      }
+      function checkNumeric(elem, msg){
+        var exp=/^[0-9]+$/;
+        if(elem.value.match(exp)){
+          return true;
+        }else{
+          alert("¼ýÀÚ¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä!!");
+          elem.focus();
+          return false;
+        }
+      }
+      </script>
+      <form align="center">
+        <h2>¹è¼Û¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä</h2>
+        <input type='text' id='Delnumber' required pattern="/^[0-9]+$/"/>
+        <input type='button' onClick="check()" value="°Ë»ö"/>
+	      <br></br>
+	      <img id="NY_Delivery" src="img/NY_Delivery.png" alt="Generic placeholder image" style="display:none" width="320" height="270"/>
+	      
+      </form>
+
         <!-- /END THE FEATURETTES -->
         <hr class="featurette-divider">
         
@@ -89,4 +140,12 @@
 
   </body>
 </html>
+
+oci_free_statement($DEL_NUMBER);
+oci_free_statement($CUS_NAME);
+oci_free_statement($COM_NAME);
+oci_free_statement($COM_PHONE);
+oci_free_statement($COM_ADDRESS);
+oci_close($con);
+?>
 
