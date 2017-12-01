@@ -70,6 +70,17 @@
         echo "Oricale Connect Error";
         exit();
       }
+      $DEL_NUMBER = oci_parse($con, "select DEL_NUMBER from PORDER");
+      $CUS_NAME = oci_parse($con, "select CUS_NAME from CUSTOMER where PODER.CUS_PHONE = CUSTOMER.CUS_PHONE");
+      $COM_NAME = oci_parse($con, "select COM_NAME from COMPANY");
+      $COM_PHONE = oci_parse($con, "select COM_PHONE from COMPANY");
+      $COM_ADDRESS = oci_parse($con, "select COM_ADDRESS from COMPANY");
+      
+      oci_execute($DEL_NUMBER);
+      oci_execute($CUS_NAME);
+      oci_execute($COM_NAME);
+      oci_execute($COM_PHONE);
+      oci_execute($COM_ADDRESS);
 
     <div class="container marketing">
       
