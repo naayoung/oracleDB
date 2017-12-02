@@ -88,6 +88,7 @@
       function check(){
         var name=document.getElementById('Delnumber').value;
         var NY=document.getElementById('NY_Delivery').id;
+        var Robert=document.getElementById('Robert_Delivery').id;
         
         if($DEL_NUMBER == name ){
           document.write("<font size='5'> $CUS_NAME님의 상품은 배송준비중입니다!♡</font></br></br>");
@@ -95,8 +96,10 @@
           document.write("<font size='4'> 택배업체명: $COM_NAME</br>전화번호: $COM_PHONE</br>주소: $COM_ADDRESS</br></font></br></br>");
           if($COM_NAME == NY)
             document.write("<img width='450' height='270' src='img/NY_Delivery.png'/></br></br>");
-          else
+          else if($COM_NAME == Robert)
             document.write("<img width='450' height='270' src='img/Robert_Delivery.png'/></br></br>");
+          else
+            document.write("<img width='450' height='270' src='img/Soo_Delivery.png'/></br></br>");
           
         }
         else if($DEL_NUMBER != name){
