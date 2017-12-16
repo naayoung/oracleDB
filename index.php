@@ -50,7 +50,7 @@ class index {
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="order.php">Order</a></li>
                 <li><a href="order_check.php">Check</a></li>
-                <li><a href="order_change.php">Change</a></li>                
+                <li><a href="order_change.html">Change</a></li>                
               </ul>
             </div>
           </div>
