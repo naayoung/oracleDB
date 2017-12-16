@@ -32,7 +32,7 @@
     <link rel="icon" href="./favicon.png">
 
     <title>Delivery Management System</title>
-    
+
     <!-- CSS -->
     <link rel="icon" href="./favicon.png">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -66,7 +66,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li class="active"><a href="order.html">Order</a></li>
                         <li><a href="order_check.html">Check</a></li>
-                        <li><a href="order_change.html">Change</a></li>                
+                        <li><a href="order_change.html">Change</a></li>
                     </ul>
                     </div>
                 </div>
@@ -76,29 +76,25 @@
 
     <!-- START THE FEATURETTES -->
     <div class="container marketing">
-      <form class="order" action="order_finish.php" method="post">
+      <form class="order" action="http://cic.hongik.ac.kr/a_team/a_team7/order_finish.php" method="post">
 
         <p> <h1>주문</h1> </p>
         <p> <h2>구매자정보</h2> </p>
         <p></p>
         <table class="customer_table">
           <tr>
-            <td class="col1">구매자ID</td>
-            <td class="col2"><input type="text" name="ID" value="" placeholder="ID"></td>
-          </tr>
-          <tr>
             <td class="col1">이름</td>
             <td class="col2">
-              <input type="text" name="name" value="" placeholder="name">
+              <input type="text" name="name" value="" >
             </td>
           </tr>
           <tr>
             <td class="col1">이메일 </td>
-            <td class="col2"><input type="text" name="email" value="" placeholder="e-mail">   </td>
+            <td class="col2"><input type="text" name="email" value="" >   </td>
           </tr>
           <tr>
               <td class="col1">전화번호 </td>
-              <td class="col2"><input type="text" name="pnumber" value="" placeholder="phone"> </td>
+              <td class="col2"><input type="text" name="pnumber" value="" > </td>
           </tr>
         </table>
 
@@ -106,39 +102,40 @@
         <table class="delivery_address">
           <tr>
             <td class="col1">이름</td>
-            <td class="col2"><input type="text" name="name2" value="" placeholder="name">
+            <td class="col2"><input type="text" name="name2" value="" >
           </tr>
           <tr>
             <td class="col1">  배송 주소 </td>
-            <td class="col2"><input type="text" name="address" value="" placeholder="address"> </td>
+            <td class="col2"><input type="text" name="address" value="" > </td>
           </tr>
           <tr>
             <td class="col1">  연락처</td>
-            <td class="col2"> <input type="text" name="pnumber2" value="" placeholder="phone"> </td>
+            <td class="col2"> <input type="text" name="pnumber2" value=""> </td>
           </tr>
           <tr>
             <td class="col1">배송 <br>요청사항 </td>
-            <td class="col2"><textarea cols="50" rows="2" placeholder="request"></textarea> </td>
+            <td class="col2"><textarea  name="etc" cols="50" rows="2" ></textarea> </td>
           </tr>
         </table>
 
         <p> <h2>제품정보</h2> </p>
         <table class="product_table">
           <tr>
-            <td class="col1">주문번호</td>
-            <td class="col2"><input type="text" name="onumber" value="" placeholder="onumber">  </td>
+            <td class="col1">제품이름</td>
+            <td class="col2">
+              <input type="text" name="pro_name" value="" >
+              <button type="button" class="btn btn-default">추가</button>
+            </td>
           </tr>
           <tr>
             <td class="col1">수량</td>
-            <td class="col2"> <input type="text" name="" value="" placeholder="000"> </td>
-          </tr>
-          <tr>
-            <td class="col1">구분</td>
-            <td class="col2"> <input type="text" name="" value="" placeholder="classify"> </td>
+            <td class="col2">
+              <input type="text" name="quantity" value="" >
+            </td>
           </tr>
         </table>
 
-        <p> <input type="submit" name="submit" value="완료" style="margin: 20px 50% 20px 50%"> </p>
+        <p> <button type="submit" class="btn btn-success" style="margin: 20px 50% 20px 50%">완료</button> </p>
 
       </form>
 
