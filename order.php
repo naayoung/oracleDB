@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -59,13 +58,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img height="30em" src="./favicon.png"></img> D.M.S.</a>
+                    <a class="navbar-brand" href="index.php"><img height="30em" src="./favicon.png"></img> D.M.S.</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="order.html">Order</a></li>
-                        <li><a href="order_check.html">Check</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li class="active"><a href="order.php">Order</a></li>
+                        <li><a href="order_check.php">Check</a></li>
                         <li><a href="order_change.html">Change</a></li>
                     </ul>
                     </div>
@@ -123,35 +122,16 @@
           <tr>
             <td class="col1">제품이름</td>
             <td class="col2">
-              <input type="text" name="pro_name1" value="" >
+              <input type="text" name="pro_name" value="" >
+              <button type="button" class="btn btn-default" onclick="button1_click();">추가</button>
             </td>
             <td class="col1">수량</td>
             <td class="col2">
-              <input type="text" name="quantity1" value="" >
-            </td>
-          </tr>
-          <tr>          
-            <td class="col1">제품이름</td>
-            <td class="col2">
-              <input type="text" name="pro_name2" value="" >
-            </td>
-            <td class="col1">수량</td>
-            <td class="col2">
-              <input type="text" name="quantity2" value="" >
-            </td>
-          </tr>
-          <tr> 
-            <td class="col1">제품이름</td>
-            <td class="col2">
-              <input type="text" name="pro_name3" value="" >
-            </td>
-            <td class="col1">수량</td>
-            <td class="col2">
-              <input type="text" name="quantity3" value="" >
+              <input type="text" name="quantity" value="" >
             </td>
           </tr>
         </table>
-        <p>제품정보 1개 이상 입력하시오.</p>
+
         <p> <button type="submit" class="btn btn-success" style="margin: 20px 50% 20px 50%">완료</button> </p>
 
       </form>
@@ -166,21 +146,21 @@
       </footer>
     </div><!-- /.container -->
 
-    
-    <script>
-      function button1_click() {
-        var table = document.getElementById("product");
-        var oRow = table.insertRow();
-        oRow.onmouseover=function(){table.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
-        var oCell = oRow.insertCell();
 
-        //삽입될 Form Tag
-        var frmTag = "<tr><td class='col1'>제품이름</td><td class='col2'><input type='text' name='onumber' placeholder='onumber'>";
-        frmTag += "<button type='button' class='btn btn-default' onclick='button1_click();'>추가</button>'</td></tr>";
-        frmTag += "<tr><td class='col1'>수량</td><td class='col2'><input type='text' placeholder='000'></td></tr>";
-        oRow.innerHTML = frmTag;
-      }
-    </script> 
+    <script>
+        function button1_click() {
+          var table = document.getElementById("product");
+          var oRow = table.insertRow();
+          oRow.onmouseover=function(){table.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
+          var oCell = oRow.insertCell();
+
+          //삽입될 Form Tag
+          var frmTag = "<tr><td class='col1'>제품이름</td><td class='col2'><input type='text' name='onumber' >";
+          frmTag += "<button type='button' class='btn btn-default' onclick='button1_click();'>추가</button>'</td></tr>";
+          frmTag += "<tr><td class='col1'>수량</td><td class='col2'><input type='text' ></td></tr>";
+          oRow.innerHTML = frmTag;
+        }
+      </script>
 
 
     <!-- Bootstrap core JavaScript
@@ -193,4 +173,3 @@
     <script src="js/ie10-viewport-bug-workaround.js"></script>
 
   </body>
-</html>
