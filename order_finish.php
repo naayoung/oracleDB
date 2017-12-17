@@ -1,14 +1,84 @@
-<?php
+<?php   //oracle connect
 $con = oci_connect("B489059","B489059","203.249.87.162:1521/orcl");
 
      if(!$con){
-       echo "Oricale Connect Error";
+       echo "Oracle Connect Error";
        exit();
      }
- ?>
+?>
 
 
-<!DOCTYPE html>
+<?php   //insert query
+
+//customer 값입력
+$CUS_PHONE = $_POST['pnumber'];
+$CUS_NAME = $_POST['name'];
+$EMAIL = $_POST['email'];
+
+$stmt = oci_parse($con, "insert into CUSTOMER values ('".$CUS_PHONE."','".$CUS_NAME."','".$EMAIL."')");
+oci_execute($stmt);
+oci_commit($stmt);
+
+////////////////////////수정
+if($stmt){  
+  echo "SQL문 처리 성공";  
+}  
+else{  
+  echo "SQL문 처리중 에러 발생 : "; 
+  echo oci_parse($con);
+} 
+////////////////////////
+
+//porder 값 입력
+$ORDER_NUMBER= i;
+
+$CUS_PHONE = $_POST['pnumber'];
+$REC_NAME = $_POST['name2'];
+$ADDRESS  = $_POST['address'];
+$REC_PHONE = $_POST['pnumber2'];
+$ETC = $_POST['etc'];
+
+$stmt = oci_parse($con, "insert into PORDER values (8,'".$REC_NAME."','".$ADDRESS."','".$REC_PHONE."','".$ETC."',19960513,'".$CUS_PHONE."')");
+oci_execute($stmt);
+oci_commit($stmt);
+
+
+//product 값 입력
+$PRO_NAME = $_POST['pro_name'];
+$QUANTITY = $_POST['quantity'];
+
+$stmt = oci_parse($con, "insert into PRODUCT values ('".$PRO_NAME."','".$QUANTITY."',8)");
+oci_execute($stmt);
+oci_commit($stmt);
+
+
+
+$CUS_PHONE = $_POST['pnumber'];
+$sql3 = 'INSERT INTO PRODUCT(PRO_NAME,QUANTITY,ORDER_NUMBER) '.
+       'VALUES(:pname,:quan,5)';
+
+$compiled3 = oci_parse($con, $sql3);
+
+oci_bind_by_name($compiled3, ':pname', $PRO_NAME);
+oci_bind_by_name($compiled3, ':quan', $QUANTITY);
+
+oci_execute($compiled3);
+oci_commit($compiled3);
+oci_free_statement($compiled3);
+
+
+oci_close($con);
+?>
+
+
+<?php
+// android
+$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
+
+if (!$android){
+?>
+
+<!-- html start -->
 <html lang="ko">
   <head>
     <style media="screen">
@@ -39,68 +109,6 @@ $con = oci_connect("B489059","B489059","203.249.87.162:1521/orcl");
       <script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script>
       <script src="js/ie-emulation-modes-warning.js"></script>
   </head>
-
-<?php
-
-//customer 값입력
-$CUS_PHONE = $_POST['pnumber'];
-$CUS_NAME = $_POST['name'];
-$EMAIL = $_POST['email'];
-
-$stmt = oci_parse($con, "insert into CUSTOMER values ('".$CUS_PHONE."','".$CUS_NAME."','".$EMAIL."')");
-oci_execute($stmt);
-oci_commit($stmt);
-
-
-
-
-
-
-
-i=random();
-//porder 값 입력
-$ORDER_NUMBER= i;
-
-$CUS_PHONE = $_POST['pnumber'];
-$REC_NAME = $_POST['name2'];
-$ADDRESS  = $_POST['address'];
-$REC_PHONE = $_POST['pnumber2'];
-$ETC = $_POST['etc'];
-
-$stmt = oci_parse($con, "insert into PORDER values (8,'".$REC_NAME."','".$ADDRESS."','".$REC_PHONE."','".$ETC."',19960513,'".$CUS_PHONE."')");
-oci_execute($stmt);
-oci_commit($stmt);
-
-
-
-
-
-//product 값 입력
-$PRO_NAME = $_POST['pro_name'];
-$QUANTITY = $_POST['quantity'];
-
-$stmt = oci_parse($con, "insert into PRODUCT values ('".$PRO_NAME."','".$QUANTITY."',8)");
-oci_execute($stmt);
-oci_commit($stmt);
-
-
-
-$CUS_PHONE = $_POST['pnumber'];
-$sql3 = 'INSERT INTO PRODUCT(PRO_NAME,QUANTITY,ORDER_NUMBER) '.
-       'VALUES(:pname,:quan,5)';
-
-$compiled3 = oci_parse($con, $sql3);
-
-oci_bind_by_name($compiled3, ':pname', $PRO_NAME);
-oci_bind_by_name($compiled3, ':quan', $QUANTITY);
-
-oci_execute($compiled3);
-oci_commit($compiled3);
-oci_free_statement($compiled3);
-
-
-oci_close($con);
- ?>
 
 
 
@@ -171,3 +179,8 @@ oci_close($con);
 
   </body>
 </html>
+
+<!-- html end -->
+<?php
+}
+?>
