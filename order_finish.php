@@ -71,10 +71,10 @@ $ADDRESS  = $_POST['address'];
 $REC_PHONE = $_POST['pnumber2'];
 $ETC = $_POST['etc'];
 
-if($k = 1){
+if($k ==1){
   $COM_NAME = 'NY_Delivery';
 }
-else if($k = 2){
+else if($k == 2){
   $COM_NAME = 'SOO_Delivery';
 }
 else{
@@ -126,13 +126,13 @@ oci_close($con);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.html"><img height="30em" src="./favicon.png"></img> D.M.S.</a>
+                  <a class="navbar-brand" href="index.php"><img height="30em" src="./favicon.png"></img> D.M.S.</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="order.html">Order</a></li>
-                    <li><a href="order_check.html">Check</a></li>
+                    <li class="active"><a href="index.php">Home</a></li>
+                    <li><a href="order.php">Order</a></li>
+                    <li><a href="order_check.php">Check</a></li>
                     <li><a href="order_change.html">Change</a></li>
                   </ul>
                 </div>
