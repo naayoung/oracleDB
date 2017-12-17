@@ -119,15 +119,13 @@
         </table>
 
         <p> <h2>제품정보</h2> </p>
-        <table class="product_table">
+        <table class="product_table" id="product">
           <tr>
             <td class="col1">제품이름</td>
             <td class="col2">
               <input type="text" name="onumber" value="" placeholder="onumber">  
-              <button type="button" class="btn btn-default">추가</button>  
+              <button type="button" class="btn btn-default" onclick="button1_click();">추가</button> 
             </td>
-          </tr>
-          <tr>
             <td class="col1">수량</td>
             <td class="col2"> 
               <input type="text" name="" value="" placeholder="000"> 
@@ -148,6 +146,22 @@
         <p>&copy; 2017 Delivery Management System &middot; <a href="#">Privacy</a></p>
       </footer>
     </div><!-- /.container -->
+
+    <script>
+      function button1_click() {
+        var table = document.getElementById("product");
+        var oRow = table.insertRow();
+        oRow.onmouseover=function(){table.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
+        var oCell = oRow.insertCell();
+
+        //삽입될 Form Tag
+        var frmTag = "<tr><td class='col1'>제품이름</td><td class='col2'><input type='text' name='onumber' placeholder='onumber'>";
+        frmTag += "<button type='button' class='btn btn-default' onclick='button1_click();'>추가</button>'</td></tr>";
+        frmTag += "<tr><td class='col1'>수량</td><td class='col2'><input type='text' placeholder='000'></td></tr>";
+        oRow.innerHTML = frmTag;
+      }
+    </script> 
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
