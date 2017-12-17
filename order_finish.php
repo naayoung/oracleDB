@@ -8,15 +8,6 @@ $con = oci_connect("B489059","B489059","203.249.87.162:1521/orcl");
  ?>
 
 
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -50,40 +41,65 @@ $con = oci_connect("B489059","B489059","203.249.87.162:1521/orcl");
   </head>
 
 <?php
-$CUS_PHONE = oci_parse($con, "INSERT INTO CUSTOMER (CUS_PHONE) VALUES(".$_POST['pnumber'].");");
-       oci_execute($CUS_PHONE);
-$CUS_NAME = oci_parse($con, "INSERT INTO CUSTOMER (CUS_NAME) VALUES('".$_POST['name']."');");
-       oci_execute($CUS_NAME);
-$EMAIL = oci_parse($con, "INSERT INTO CUSTOMER (EMAIL) VALUES('".$_POST['email']."');");
-       oci_execute($EMAIL);
-$REC_NAME = oci_parse($con, "INSERT INTO PORDER (REC_NAME) VALUES('".$_POST['name2']."');");
-       oci_execute($REC_NAME);
-$ADDRESS = oci_parse($con, "INSERT INTO PORDER (ADDRESS) VALUES('".$_POST['address']."');");
-       oci_execute($ADDRESS);
-$REC_PHONE = oci_parse($con, "INSERT INTO PORDER (REC_PHONE) VALUES(".$_POST['pnumber2'].");");
-       oci_execute($REC_PHONE);
-$ETC = oci_parse($con, "INSERT INTO PORDER (ETC) VALUES('".$_POST[etc]."');");
-       oci_execute($ETC);
-$ODER_NUMBER  = oci_parse($con, "INSERT INTO PORDER (ETC) VALUES(000000);");
-        oci_execute($ETC);
-$PRO_NAME = oci_parse($con, "INSERT INTO PRODUCT (PRO_NAME) VALUES('".$_POST['pro_name']."');");
-       oci_execute($PRO_NAME);
-$QUANTITY = oci_parse($con, "INSERT INTO PRODUCT (QUANTITY) VALUES('".$_POST['quantity']."');");
-       oci_execute($QUANTITY);
-$DELIVERY = oci_parse($con, "INSERT INTO DELIVERY (DEL_NUMBER) VALUES(111111);");
-        oci_execute($ETC);
 
-oci_free_statement($CUS_PHONE);
-oci_free_statement($CUS_NAME);
-oci_free_statement($EMAIL);
-oci_free_statement($REC_NAME);
-oci_free_statement($ADDRESS);
-oci_free_statement($REC_PHONE);
-oci_free_statement($ETC);
-oci_free_statement($PRO_NAME);
-oci_free_statement($QUANTITY);
+//customer 값입력
+$CUS_PHONE = $_POST['pnumber'];
+$CUS_NAME = $_POST['name'];
+$EMAIL = $_POST['email'];
 
-oci_close($conn);
+$stmt = oci_parse($con, "insert into CUSTOMER values ('".$CUS_PHONE."','".$CUS_NAME."','".$EMAIL."')");
+oci_execute($stmt);
+oci_commit($stmt);
+
+
+
+
+
+
+
+i=random();
+//porder 값 입력
+$ORDER_NUMBER= i;
+
+$CUS_PHONE = $_POST['pnumber'];
+$REC_NAME = $_POST['name2'];
+$ADDRESS  = $_POST['address'];
+$REC_PHONE = $_POST['pnumber2'];
+$ETC = $_POST['etc'];
+
+$stmt = oci_parse($con, "insert into PORDER values (8,'".$REC_NAME."','".$ADDRESS."','".$REC_PHONE."','".$ETC."',19960513,'".$CUS_PHONE."')");
+oci_execute($stmt);
+oci_commit($stmt);
+
+
+
+
+
+//product 값 입력
+$PRO_NAME = $_POST['pro_name'];
+$QUANTITY = $_POST['quantity'];
+
+$stmt = oci_parse($con, "insert into PRODUCT values ('".$PRO_NAME."','".$QUANTITY."',8)");
+oci_execute($stmt);
+oci_commit($stmt);
+
+
+
+$CUS_PHONE = $_POST['pnumber'];
+$sql3 = 'INSERT INTO PRODUCT(PRO_NAME,QUANTITY,ORDER_NUMBER) '.
+       'VALUES(:pname,:quan,5)';
+
+$compiled3 = oci_parse($con, $sql3);
+
+oci_bind_by_name($compiled3, ':pname', $PRO_NAME);
+oci_bind_by_name($compiled3, ':quan', $QUANTITY);
+
+oci_execute($compiled3);
+oci_commit($compiled3);
+oci_free_statement($compiled3);
+
+
+oci_close($con);
  ?>
 
 
