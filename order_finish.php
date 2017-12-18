@@ -93,12 +93,24 @@ oci_commit($stmt);
 
 
 //product 값 입력
-$PRO_NAME = $_POST['pro_name'];
-$QUANTITY = $_POST['quantity'];
+$PRO_NAME1 = $_POST['pro_name1'];
+$QUANTITY1 = $_POST['quantity1'];
+$PRO_NAME2 = $_POST['pro_name2'];
+$QUANTITY2 = $_POST['quantity2'];
+$PRO_NAME3 = $_POST['pro_name3'];
+$QUANTITY3 = $_POST['quantity3'];
 
-$stmt = oci_parse($con, "insert into PRODUCT values ('".$PRO_NAME."','".$QUANTITY."','".$ORDER_NUMBER."')");
+$stmt = oci_parse($con, "insert into PRODUCT values ('".$PRO_NAME1."','".$QUANTITY1."','".$ORDER_NUMBER."')");
 oci_execute($stmt);
 oci_commit($stmt);
+$stmt = oci_parse($con, "insert into PRODUCT values ('".$PRO_NAME2."','".$QUANTITY2."','".$ORDER_NUMBER."')");
+oci_execute($stmt);
+oci_commit($stmt);
+$stmt = oci_parse($con, "insert into PRODUCT values ('".$PRO_NAME3."','".$QUANTITY3."','".$ORDER_NUMBER."')");
+oci_execute($stmt);
+oci_commit($stmt);
+
+
 
 
 
